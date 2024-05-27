@@ -33,10 +33,10 @@ namespace MvcProjeKampi.Controllers
         }
 
         [HttpPost]
-        public ActionResult AddCategory(Category p) 
+        public ActionResult AddCategory(Category p)
         {
-            CategoryValidator validator = new CategoryValidator();
-            ValidationResult results = validator.Validate(p);
+            CategoryValidator Categoryvalidator = new CategoryValidator();
+            ValidationResult results = Categoryvalidator.Validate(p);
             if (results.IsValid)
             {
                 cm.CetagoryAdd(p);
@@ -50,7 +50,6 @@ namespace MvcProjeKampi.Controllers
                 }
             }
             
-
             return View();
         }
 

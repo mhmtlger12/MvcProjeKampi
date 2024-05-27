@@ -16,6 +16,5 @@ namespace DataAccessLayer.Abstract
 
         List<T> List(Expression<Func<T, bool>> filter);
 
-
     }
 }
