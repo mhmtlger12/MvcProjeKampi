@@ -16,7 +16,13 @@ namespace DataAccessLayer.Concrete.Repositories
 
         public GenericRepository()
         {
-                _object=c.Set<T>();
+            _object = c.Set<T>();
+        }
+        public void Insert(T p)
+        {
+            var addedEntity = c.Entry(p);
+            addedEntity.State = EntityState.Added;
+            c.SaveChanges();
         }
         public void Delete(T p)
         {
@@ -24,35 +30,30 @@ namespace DataAccessLayer.Concrete.Repositories
             DeletedEntity.State = EntityState.Deleted;
             c.SaveChanges();
         }
-
-        public T Get(Expression<Func<T, bool>> filter)
-        {
-            return _object.SingleOrDefault(filter);
-           
-        }
-
-        public void Insert(T p)
-        {
-            var addedEntity = c.Entry(p);
-            addedEntity.State = EntityState.Added;
-            c.SaveChanges();    
-        }
-
-        public List<T> List()
-        {
-            return _object.ToList();
-        }
-
-        public List<T> List(Expression<Func<T, bool>> filter)
-        {
-            return _object.Where(filter).ToList();
-        }
-
         public void Update(T p)
         {
             var updatedEntity = c.Entry(p);
             updatedEntity.State = EntityState.Modified;
             c.SaveChanges();
         }
+        public T Get(Expression<Func<T, bool>> filter)
+        {
+            return _object.SingleOrDefault(filter);
+
+        }
+        public List<T> List(Expression<Func<T, bool>> filter)
+        {
+            return _object.Where(filter).ToList();
+        }
+
+
+        public List<T> List()
+        {
+            return _object.ToList();
+        }
+
+
+
+
     }
 }
