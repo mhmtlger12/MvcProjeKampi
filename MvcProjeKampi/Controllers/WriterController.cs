@@ -16,6 +16,7 @@ namespace MvcProjeKampi.Controllers
     {
         // GET: Writer
         WriterManager wm = new WriterManager(new EfWriterDal());
+        WriterValidator WriterValidation = new WriterValidator();
         public ActionResult Index()
         {
             //Listeleme işlemini yapıyoruz
@@ -32,7 +33,7 @@ namespace MvcProjeKampi.Controllers
         [HttpPost]
         public ActionResult AddWriter(Writer p)
         {
-            WriterValidator WriterValidation = new WriterValidator();    
+      
             ValidationResult results=WriterValidation.Validate(p);
             if (results.IsValid)
             {
@@ -49,5 +50,29 @@ namespace MvcProjeKampi.Controllers
             return View();
         }
         //Yazar ekleme işlemi
+        [HttpGet]
+        public ActionResult EditWriter(int id)
+        {
+            var writervalue=wm.GetByID(id);
+            return View(writervalue);   
+        }
+        [HttpPost]
+        public ActionResult EditWriter(Writer p)
+        {
+            ValidationResult results = WriterValidation.Validate(p);
+            if (results.IsValid)
+            {
+                wm.WriterUpdate(p);
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                foreach (var item in results.Errors)
+                {
+                    ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
+                }
+            }
+            return View();
+        }
     }
 }
