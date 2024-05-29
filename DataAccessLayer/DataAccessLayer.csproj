@@ -52,6 +52,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Abstract\ICategoryDal.cs" />
+    <Compile Include="Abstract\IContentDal.cs" />
     <Compile Include="Abstract\IHeadingDal.cs" />
     <Compile Include="Abstract\IRepository.cs" />
     <Compile Include="Abstract\IWriterDal.cs" />
@@ -79,6 +80,14 @@
     <Compile Include="Migrations\202405281220108_mig_writerStatusadd.Designer.cs">
       <DependentUpon>202405281220108_mig_writerStatusadd.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202405290848581_mig_contentstatusadd.cs" />
+    <Compile Include="Migrations\202405290848581_mig_contentstatusadd.designer.cs">
+      <DependentUpon>202405290848581_mig_contentstatusadd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202405290851130_mig_headingstatusadd.cs" />
+    <Compile Include="Migrations\202405290851130_mig_headingstatusadd.designer.cs">
+      <DependentUpon>202405290851130_mig_headingstatusadd.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -104,6 +113,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202405281220108_mig_writerStatusadd.resx">
       <DependentUpon>202405281220108_mig_writerStatusadd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202405290848581_mig_contentstatusadd.resx">
+      <DependentUpon>202405290848581_mig_contentstatusadd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202405290851130_mig_headingstatusadd.resx">
+      <DependentUpon>202405290851130_mig_headingstatusadd.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
